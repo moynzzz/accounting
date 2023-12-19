@@ -13,13 +13,8 @@ class AccountingServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__ . '/../../config/accounting.php' => config_path('accounting.php'),
-        ], 'config');
-
-        $this->publishes([
-            __DIR__ . '/../migrations/' => database_path('/migrations')
-        ], 'migrations');
+        $this->publishesConfig(__DIR__ . '/../../config/accounting.php', 'accounting.php');
+        $this->publishesMigrations(__DIR__ . '/../migrations/', 'accounting.php');
     }
 
     /**
